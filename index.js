@@ -2,15 +2,29 @@ const allButtons = document.querySelectorAll('.drum');
 
 for (const button of allButtons) {
     button.addEventListener('click', (e) => {
-        playDrum(e.target.id)
+        playDrum(e.target.id);
+        aminateButton(e.target.id);
     })
 }
 
 
 addEventListener('keypress', (e) => {
-    playDrum(e.key.toLowerCase())
+    playDrum(e.key.toLowerCase());
+    aminateButton(e.key.toLowerCase());
 })
 
+//Create function that will add amination
+function aminateButton(letter) {
+    //Then add the pressed class to current button
+    const currentBtn = document.querySelector(`.${letter}`);
+    currentBtn.classList.add('pressed');
+    
+    //Then in 0.25sec remove the "pressed" class
+    setTimeout(() => {
+        currentBtn.classList.remove('pressed');
+    },250 )
+  
+}
 
 //Create a playDrum function
 function playDrum(letter) {
